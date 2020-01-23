@@ -5,23 +5,23 @@ const cors = require('cors');
 const app = express()
 
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
+
+app.use(cors());
+app.options('*', cors());
 
 const http = require('http');
 const server = http.createServer(app);
 const port = process.env.PORT || 3000
 const { createLink, UpdateLocation, killLink, AddNewUser, RemoveUser}  = require('./user')
 
-
-
-
 const io = socket(server) 
 
-io.set('origins', '*:*')
+io.set('origins', '*:*');
 
 io.on('connection', function(socket){
     console.log('a user connected');
