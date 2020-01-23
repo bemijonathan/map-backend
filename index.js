@@ -21,6 +21,8 @@ const { createLink, UpdateLocation, killLink, AddNewUser, RemoveUser}  = require
 
 const io = socket(server) 
 
+io.set('origins', '*:*')
+
 io.on('connection', function(socket){
     console.log('a user connected');
     try {
