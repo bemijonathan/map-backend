@@ -3,11 +3,6 @@ const socket = require('socket.io');
 const bodyparser = require('body-parser')
 const cors = require('cors');
 const app = express()
-const http = require('http');
-const server = http.createServer(app);
-const port = process.env.PORT || 3000
-const { createLink, UpdateLocation, killLink, AddNewUser, RemoveUser}  = require('./user')
-
 
 
 app.use(function(req, res, next) {
@@ -15,6 +10,13 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
+const http = require('http');
+const server = http.createServer(app);
+const port = process.env.PORT || 3000
+const { createLink, UpdateLocation, killLink, AddNewUser, RemoveUser}  = require('./user')
+
+
 
 
 const io = socket(server) 
