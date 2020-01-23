@@ -5,7 +5,7 @@ const cors = require('cors');
 const app = express()
 const http = require('http');
 const server = http.createServer(app);
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3500
 const { createLink, UpdateLocation, killLink, AddNewUser, RemoveUser}  = require('./user')
 const io = socket(server) 
 
