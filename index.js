@@ -4,7 +4,8 @@ const bodyparser = require('body-parser')
 const cors = require('cors');
 const app = express()
 const http = require('http');
-const server = http.createServer(app)
+const server = http.createServer(app);
+const port = process.env.PORT || 3000
 const { createLink, UpdateLocation, killLink, AddNewUser, RemoveUser}  = require('./user')
 
 const io = socket(server) 
@@ -41,7 +42,7 @@ io.on('connection', function(socket){
     
   });
 
-server.listen('8800' , () => {
+server.listen(port , () => {
     console.log('ap is working now')
 })
 
